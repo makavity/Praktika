@@ -1,6 +1,6 @@
 package com.practice.praktika.client;
 
-import com.practice.praktika.entity.Weather;
+import com.practice.praktika.model.Weather;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

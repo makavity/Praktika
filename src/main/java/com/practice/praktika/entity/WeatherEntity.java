@@ -1,21 +1,35 @@
 package com.practice.praktika.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.*;
 
-public class Cells {
+@Entity
+@Table(name = "prognoz")
+public class WeatherEntity {
 
-    @JsonProperty("ForecastDate")
+    @Id
+    @Column(name = "number")
+    private Long number;
+
+    @Column
     private String forecastDate;
 
-    @JsonProperty("MinimumTemperature")
+    @Column
     private String minimumTemperature;
 
-    @JsonProperty("MaximumTemperature")
+    @Column
     private String maximumTemperature;
 
-    @JsonProperty("Notes")
+    @Column
     private String notes;
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
 
     public String getForecastDate() {
         return forecastDate;

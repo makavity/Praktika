@@ -1,6 +1,6 @@
 package com.practice.praktika.controller;
 
-import com.practice.praktika.entity.Weather;
+import com.practice.praktika.model.Weather;
 import com.practice.praktika.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
