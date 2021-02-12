@@ -6,11 +6,7 @@ insert into hibernate_sequence values ( 1 );
 
 CREATE TABLE prognoz (
 
-    number BIGINT NOT NULL,
-    forecastDate date not null,
-    minimumTemperature varchar(256) not null,
-    maximumTemperature varchar(256) not null,
-    notes varchar(256) not null,
-    PRIMARY KEY (number)
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
 
 ) engine=MyISAM;

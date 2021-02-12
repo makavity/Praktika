@@ -1,5 +1,7 @@
 package com.practice.praktika.entity;
 
+import com.fasterxml.jackson.annotation.JsonClassDescription;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -8,27 +10,23 @@ import javax.persistence.*;
 public class WeatherEntity {
 
     @Id
-    @Column(name = "number")
-    private Long number;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column
     private String forecastDate;
 
-    @Column
     private String minimumTemperature;
 
-    @Column
     private String maximumTemperature;
 
-    @Column
     private String notes;
 
-    public Long getNumber() {
-        return number;
+    public Long getId() {
+        return id;
     }
 
-    public void setNumber(Long number) {
-        this.number = number;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getForecastDate() {

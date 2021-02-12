@@ -2,7 +2,6 @@ package com.practice.praktika.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.practice.praktika.model.Cells;
 
 @JsonAutoDetect
 public class Weather {

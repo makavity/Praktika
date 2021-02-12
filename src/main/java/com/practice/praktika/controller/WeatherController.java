@@ -1,5 +1,6 @@
 package com.practice.praktika.controller;
 
+import com.practice.praktika.entity.WeatherEntity;
 import com.practice.praktika.model.Weather;
 import com.practice.praktika.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class WeatherController {
 
     @GetMapping
     public List<Weather> getWeatherJSON() {
-        return testService.test();
+        try {
+            return testService.test();
+        } catch (Exception e){
+            return null;
+        }
     }
 }

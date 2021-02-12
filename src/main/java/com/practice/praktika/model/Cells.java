@@ -3,6 +3,7 @@ package com.practice.praktika.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class Cells {
 
     @JsonProperty("ForecastDate")
@@ -14,7 +15,7 @@ public class Cells {
     @JsonProperty("MaximumTemperature")
     private String maximumTemperature;
 
-    @JsonProperty("Notes")
+    @JsonProperty("PrecipitationType")
     private String notes;
 
     public String getForecastDate() {
