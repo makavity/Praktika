@@ -5,6 +5,7 @@ import com.practice.praktika.entity.WeatherEntity;
 import com.practice.praktika.model.Weather;
 import com.practice.praktika.repository.WeatherRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class TestService {
         return (List<WeatherEntity>) weatherRepo.findAll();
     }
 
+    @Cacheable
     public Optional getById(Long id) {
 
         return (Optional) weatherRepo.findById(id);
