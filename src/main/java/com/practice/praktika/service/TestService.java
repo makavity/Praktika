@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @EnableScheduling
 @Service
@@ -22,8 +23,13 @@ public class TestService {
         return (List<WeatherEntity>) weatherRepo.findAll();
     }
 
+    public Optional getById(Long id) {
+
+        return (Optional) weatherRepo.findById(id);
+    }
+
     @Scheduled(fixedDelay = 3600000)
-    public void updateTable(){
+    public void updateTable() {
         String api_key = "2c29ee50b30e5202fa15b6d1616e0aa4";
         List<Weather> weathers = null;
 
