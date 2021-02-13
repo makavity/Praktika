@@ -12,7 +12,9 @@ import java.util.List;
 public interface WeatherClient {
 
     @GetMapping("/v1/datasets/60667/rows")
-    public List<Weather> getStopListRules(@RequestParam("api_key") String api_key);
+    public List<Weather> getStopListRules(@RequestParam("api_key") String api_key, @RequestParam("$skip") long $skip);
 
+    @GetMapping("/v1/datasets/60667/count")
+    public int rowsCount(@RequestParam("api_key") String api_key);
 }
 
