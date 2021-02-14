@@ -17,17 +17,17 @@ import java.util.Optional;
 @Service
 public class TestService {
 
-    private WeatherRepo weatherRepo;
-    private WeatherClient weatherClient;
+    private final WeatherRepo weatherRepo;
+    private final WeatherClient weatherClient;
 
-    public List test() {
+    public List<WeatherEntity> test() {
         return (List<WeatherEntity>) weatherRepo.findAll();
     }
 
-    @Cacheable
-    public Optional getById(Long id) {
+    @Cacheable("weathers")
+    public Optional<WeatherEntity> getById(Long id) {
 
-        return (Optional) weatherRepo.findById(id);
+        return weatherRepo.findById(id);
     }
 
     @Scheduled(fixedDelay = 3600000)
@@ -38,13 +38,13 @@ public class TestService {
         if (weatherRepo.count() < weatherClient.rowsCount(api_key)) {
             weathers = weatherClient.getStopListRules(api_key, weatherRepo.count());
 
-            for (int i = 0; i < weathers.size(); i++) {
+            for (Weather weather : weathers) {
 
                 WeatherEntity weatherEntity = new WeatherEntity();
-                weatherEntity.setForecastDate(weathers.get(i).getCells().getForecastDate());
-                weatherEntity.setMinimumTemperature(weathers.get(i).getCells().getMinimumTemperature());
-                weatherEntity.setMaximumTemperature(weathers.get(i).getCells().getMaximumTemperature());
-                weatherEntity.setNotes(weathers.get(i).getCells().getNotes());
+                weatherEntity.setForecastDate(weather.getCells().getForecastDate());
+                weatherEntity.setMinimumTemperature(weather.getCells().getMinimumTemperature());
+                weatherEntity.setMaximumTemperature(weather.getCells().getMaximumTemperature());
+                weatherEntity.setNotes(weather.getCells().getNotes());
                 weatherRepo.save(weatherEntity);
             }
         }
