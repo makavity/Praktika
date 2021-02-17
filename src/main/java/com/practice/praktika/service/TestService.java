@@ -26,28 +26,27 @@ public class TestService {
 
     @Cacheable("weathers")
     public Optional<WeatherEntity> getById(Long id) {
-
         return weatherRepo.findById(id);
     }
 
     @Scheduled(fixedDelay = 3600000)
     public void updateTable() {
-        String api_key = "2c29ee50b30e5202fa15b6d1616e0aa4";
-        List<Weather> weathers = null;
+            String api_key = "2c29ee50b30e5202fa15b6d1616e0aa4";
+            List<Weather> weathers = null;
 
-        if (weatherRepo.count() < weatherClient.rowsCount(api_key)) {
-            weathers = weatherClient.getStopListRules(api_key, weatherRepo.count());
+            if (weatherRepo.count() < weatherClient.rowsCount(api_key)) {
+                weathers = weatherClient.getStopListRules(api_key, weatherRepo.count());
 
-            for (Weather weather : weathers) {
+                for (Weather weather : weathers) {
 
-                WeatherEntity weatherEntity = new WeatherEntity();
-                weatherEntity.setForecastDate(weather.getCells().getForecastDate());
-                weatherEntity.setMinimumTemperature(weather.getCells().getMinimumTemperature());
-                weatherEntity.setMaximumTemperature(weather.getCells().getMaximumTemperature());
-                weatherEntity.setNotes(weather.getCells().getNotes());
-                weatherRepo.save(weatherEntity);
+                    WeatherEntity weatherEntity = new WeatherEntity();
+                    weatherEntity.setForecastDate(weather.getCells().getForecastDate());
+                    weatherEntity.setMinimumTemperature(weather.getCells().getMinimumTemperature());
+                    weatherEntity.setMaximumTemperature(weather.getCells().getMaximumTemperature());
+                    weatherEntity.setNotes(weather.getCells().getNotes());
+                    weatherRepo.save(weatherEntity);
+                }
             }
-        }
     }
 
 

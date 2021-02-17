@@ -26,6 +26,5 @@ public class WeatherController {
     @GetMapping("/{id}")
     public Optional<WeatherEntity> deleteUser(@PathVariable Long id) {
         return testService.getById(id);
-
     }
 }
